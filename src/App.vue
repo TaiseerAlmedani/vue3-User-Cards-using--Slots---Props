@@ -1,39 +1,32 @@
 <script>
-import UserCard from './components/UserCard.vue';
+import AboutView from './views/AboutView.vue';
+import HomeView from './views/HomeView.vue';
 export default {
   components: {
-    UserCard
+    AboutView , HomeView
   },
-  data() {
-    return {
-      usersFromApi: []
-    }
-  },
-  created() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(users => this.usersFromApi = users)
-  }
 }
 </script>
 <template>
-  <section>
-    <div class="row">
-      <h1>Our Team</h1>
-    </div>
-    <div class="row">
-      <UserCard :twitter="user.address.street" :linkedin="user.name" :github="user.address.zipcode"
-        :envelope="user.address.city" v-for="user in usersFromApi" :key="user.id">
-        <template #fullName>
-          {{ user.name }}
-        </template>
-        <template #role>
-          {{ user.username }}
-        </template>
-        <template #brief>
-          {{ user.email }}
-        </template>
-      </UserCard>
-    </div>
-  </section>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <HomeView />
 </template>
+<style scoped>
+nav ul{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+ul li{
+  list-style-type: none;
+  font-size: 3rem;
+}
+</style>

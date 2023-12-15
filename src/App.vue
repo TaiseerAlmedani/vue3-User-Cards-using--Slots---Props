@@ -3,7 +3,7 @@ import AboutView from './views/AboutView.vue';
 import HomeView from './views/HomeView.vue';
 export default {
   components: {
-    AboutView , HomeView
+    AboutView, HomeView
   },
 }
 </script>
@@ -11,21 +11,23 @@ export default {
   <header>
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
+        <li> <router-link to="/home">Go to Home</router-link></li>
+        <li><router-link to="/about">Go to About</router-link></li>
+        <li><router-link to="/contact">Go to contact</router-link></li>
       </ul>
     </nav>
   </header>
-  <HomeView />
+  <router-view></router-view>
 </template>
 <style scoped>
-nav ul{
+nav ul {
   display: flex;
   justify-content: center;
   padding: 20px;
   gap: 20px;
 }
-ul li{
+
+ul li {
   list-style-type: none;
   font-size: 3rem;
 }
